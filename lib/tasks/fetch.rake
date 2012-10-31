@@ -24,7 +24,7 @@ task :fetch => :environment do
 
 end
 
-task :fetch => :environment do
+task :fetch_ilokivi => :environment do
   #Fetch Ilokivi
   doc = Nokogiri::HTML(open('http://jyy.fi/ruokalistat/'))
 #  src = doc.xpath('//frame[@name = "lunchmain"]').first['src']
