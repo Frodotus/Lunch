@@ -1,4 +1,6 @@
 Rails3BootstrapDeviseCancan::Application.routes.draw do
+  resources :lunches
+
   authenticated :user do
     root :to => 'home#index'
   end
