@@ -14,12 +14,14 @@ task :fetch_hestia => :environment do
   doc = Nokogiri::HTML(open('http://www.sonaatti.fi/hestia/'))
   foods = doc.xpath('//div[@class = "ruuat"]').first
   foods.xpath('p').each do |node|
-    lunch = Lunch.new    
-    lunch.name = node.text
-    lunch.restaurant = "Hestia"
-    lunch.date = Date.today
-    lunch.link = "http://www.sonaatti.fi/hestia/"
-    lunch.save
+    if !node.text.empty?
+      lunch = Lunch.new    
+      lunch.name = node.text
+      lunch.restaurant = "Hestia"
+      lunch.date = Date.today
+      lunch.link = "http://www.sonaatti.fi/hestia/"
+      lunch.save
+    end
   end
 end
   
