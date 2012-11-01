@@ -2,11 +2,11 @@ class HomeController < ApplicationController
   def index
     @matches = []
     @others = []
-    @lunches = Lunch.all( :conditions => {
-      :date => Date.today
-    })
+    @lunches = Lunch.all#( :conditions => {
+#      :date => Date.today
+#    })
     @lunches.each {|lunch|
-      if lunch.name.include? "Kebab"
+      if !!lunch.name.match(/(Riista|Porsaanleike)/im)
         @matches << lunch
       else
         @others << lunch

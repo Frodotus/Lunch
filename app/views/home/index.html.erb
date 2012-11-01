@@ -11,7 +11,7 @@
 <% @matches.each do |lunch| %>
   <tr>
     <td><a href="<%= lunch.link %>"><%= lunch.name %></a></td>
-    <td><%= lunch.price %></td>
+    <td><%= number_to_currency(lunch.price, :unit => "&euro;", :separator => ",", :delimiter => "", :format => "%n %u") %></td>
     <td><a href="<%= lunch.link %>"><%= lunch.restaurant %></a></td>
     <td><%= lunch.date %></td>
   </tr>
@@ -28,7 +28,7 @@
 <% @others.each do |lunch| %>
   <tr>
     <td><a href="<%= lunch.link %>"><%= lunch.name %></a></td>
-    <td><%= lunch.price %></td>
+    <td><%= number_to_currency(lunch.price, :unit => "&euro;", :separator => ",", :delimiter => "", :format => "%n %u") %></td>
     <td><a href="<%= lunch.link %>"><%= lunch.restaurant %></a></td>
     <td><%= lunch.date %></td>
   </tr>
