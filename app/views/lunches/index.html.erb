@@ -1,25 +1,35 @@
 <h1>Listing lunches</h1>
 
+<h3>Preferred:</h3>
 <table>
   <tr>
     <th>Name</th>
     <th>Price</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Restaurant</th>
   </tr>
 
-<% @lunches.each do |lunch| %>
+<% @matches.each do |lunch| %>
   <tr>
     <td><%= lunch.name %></td>
     <td><%= lunch.price %></td>
-    <td><%= link_to 'Show', lunch %></td>
-    <td><%= link_to 'Edit', edit_lunch_path(lunch) %></td>
-    <td><%= link_to 'Destroy', lunch, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= lunch.restaurant %></td>
+  </tr>
+<% end %>
+</table>
+<h3>Others:</h3>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Restaurant</th>
+  </tr>
+<% @others.each do |lunch| %>
+  <tr>
+    <td><%= lunch.name %></td>
+    <td><%= lunch.price %></td>
+    <td><%= lunch.restaurant %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
-
-<%= link_to 'New Lunch', new_lunch_path %>
