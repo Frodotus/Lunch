@@ -6,14 +6,17 @@ class HomeController < ApplicationController
       :conditions => { :date => Date.today },
       :order => 'name'
     )
-    @lunches.each {|lunch|
-      if !!lunch.name.match(/(Riista|Porsaanleike)/im)
-        @matches << lunch
-      else
-        @others << lunch
-      end
-    }
+    if user_signed_in?
 
+      @lunches.each {|lunch|
+        expr = current_user.preferences
+        if !!lunch.name.match(/(#{expr})/im)
+          @matches << lunch
+        else
+          @others << lunch
+        end
+      }
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @lunches }
