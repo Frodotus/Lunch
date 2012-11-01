@@ -4,7 +4,7 @@ class LunchesController < ApplicationController
   def index
     @matches = []
     @others = []
-    @lunches = Lunch.all
+    @lunches = Lunch.order("date")
     @lunches.each {|lunch|
       if lunch.name.include? "Kebab"
         @matches << lunch

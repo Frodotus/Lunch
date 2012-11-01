@@ -1,36 +1,39 @@
-
-<h3>Preferred:</h3>
-<table class="table table-striped table-bordered">
-  <tr>
-    <th>Name</th>
-    <th>Price</th>
-    <th>Restaurant</th>
-    <th>Date</th>
-  </tr>
-
-<% @matches.each do |lunch| %>
-  <tr>
-    <td><a href="<%= lunch.link %>"><%= lunch.name %></a></td>
-    <td><%= number_to_currency(lunch.price, :unit => "&euro;", :separator => ",", :delimiter => "", :format => "%n %u") %></td>
-    <td><a href="<%= lunch.link %>"><%= lunch.restaurant %></a></td>
-    <td><%= lunch.date %></td>
-  </tr>
+<h3>Today's menu eat it or starve:</h3>
+<% if(@matches.size > 0) %>
+  <table class="table table-striped table-bordered">
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Restaurant</th>
+      <th>Day</th>
+    </tr>
+    <% @matches.each do |lunch| %>
+    <tr>
+      <td><a href="<%= lunch.link %>"><%= lunch.name %></a></td>
+      <td><%= number_to_currency(lunch.price, :unit => "&euro;", :separator => ",", :delimiter => "", :format => "%n %u") %></td>
+      <td><a href="<%= lunch.link %>"><%= lunch.restaurant %></a></td>
+      <td><%= lunch.date.strftime('%A') %></td>
+    </tr>
+    <% end %>
+  </table>
+<% else %>
+  <h4>How about pizza today?</h4>
+  <br />
 <% end %>
-</table>
-<h3>Others:</h3>
+<h3>Other choises:</h3>
 <table class="table table-striped table-bordered">
   <tr>
     <th>Name</th>
     <th>Price</th>
     <th>Restaurant</th>
-    <th>Date</th>
+    <th>Day</th>
   </tr>
 <% @others.each do |lunch| %>
   <tr>
     <td><a href="<%= lunch.link %>"><%= lunch.name %></a></td>
     <td><%= number_to_currency(lunch.price, :unit => "&euro;", :separator => ",", :delimiter => "", :format => "%n %u") %></td>
     <td><a href="<%= lunch.link %>"><%= lunch.restaurant %></a></td>
-    <td><%= lunch.date %></td>
+    <td><%= lunch.date.strftime('%A') %></td>
   </tr>
 <% end %>
 </table>
