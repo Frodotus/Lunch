@@ -115,7 +115,7 @@ For your convenience, here is a "Tutorial for Rails on Heroku":http://railsapps.
 
 h2. Issues
 
-Please create a "GitHub issue":http://github.com/RailsApps/rails3-bootstrap-devise-cancan/issues if you identify any problems or have suggestions for improvements.
+Please create a "GitHub issue":http://github.com/Frodotus/Lunch/issues if you identify any problems or have suggestions for improvements.
 
 h2. Contributing
 
