@@ -36,7 +36,7 @@ task :fetch_antelli => :environment do
     lunch = Lunch.new    
     lunch.name = node.text
     lunch.restaurant = "Antelli"
-    lunch.date = Date.today
+    lunch.date = Date.today - Date.today.cwday
     lunch.link = "http://www.antellcatering.fi/docs/lunch.php?Technopolis%20Jyv%E4skyl%E4"
     lunch.save
   end
@@ -52,7 +52,7 @@ task :fetch_ilokivi => :environment do
     lunch = Lunch.new    
     lunch.name = node.text
     lunch.restaurant = "Ilokivi"
-    lunch.date = Date.today
+    lunch.date = Date.today - Date.today.cwday
     lunch.link = "http://jyy.fi/ruokalistat/"
     lunch.save
   end  
