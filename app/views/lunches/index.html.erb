@@ -10,9 +10,9 @@
 
 <% @matches.each do |lunch| %>
   <tr>
-    <td><%= lunch.name %></td>
+    <td><a href="<%= lunch.link %>"><%= lunch.name %></a></td>
     <td><%= lunch.price %></td>
-    <td><%= lunch.restaurant %></td>
+    <td><a href="<%= lunch.link %>"><%= lunch.restaurant %></a></td>
   </tr>
 <% end %>
 </table>
@@ -25,9 +25,9 @@
   </tr>
 <% @others.each do |lunch| %>
   <tr>
-    <td><%= lunch.name %></td>
+    <td><a href="<%= lunch.link %>"><%= lunch.name %></a></td>
     <td><%= lunch.price %></td>
-    <td><%= lunch.restaurant %></td>
+    <td><a href="<%= lunch.link %>"><%= lunch.restaurant %></a></td>
   </tr>
 <% end %>
 </table>
