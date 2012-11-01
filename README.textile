@@ -28,12 +28,6 @@ h3. Configure Email
 
 If you want your application to send email messages you must configure the application for your email account. See the article "Send Email with Rails":http://railsapps.github.com/rails-send-email.html.
 
-h3. Configure Devise
-
-You can modify the configuration file for Devise if you want to use something other than the defaults:
-
-* *config/initializers/devise.rb*
-
 h2. Create Default Users and Roles
 
 h3. Set Up a Database Seed File
