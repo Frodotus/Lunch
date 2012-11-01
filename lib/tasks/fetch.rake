@@ -28,7 +28,8 @@ task :fetch_antelli => :environment do
   doc = Nokogiri::HTML(open('http://www.antellcatering.fi/docs/lunch.php?Technopolis%20Jyv%E4skyl%E4'))
   src = doc.xpath('//frame[@name = "lunchmain"]').first['src']
   doc = Nokogiri::HTML(open("http://www.antellcatering.fi/docs/#{src}"))
-  doc.xpath('//td[@class = "tdc"]').each do |node|
+  foods = doc.xpath('//table[@class = "lunchTable2"]').first
+  foods.xpath('tbody/tr/td[@class = "tdc"]').each do |node|
     lunch = Lunch.new    
     lunch.name = node.text
     lunch.restaurant = "Antelli"
