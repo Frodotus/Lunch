@@ -1,4 +1,38 @@
-<h3>Home</h3>
-<% @users.each do |user| %>
-  <p>User: <%=link_to user.name, user %></p>
+
+<h3>Preferred:</h3>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Restaurant</th>
+    <th>Date</th>
+  </tr>
+
+<% @matches.each do |lunch| %>
+  <tr>
+    <td><a href="<%= lunch.link %>"><%= lunch.name %></a></td>
+    <td><%= lunch.price %></td>
+    <td><a href="<%= lunch.link %>"><%= lunch.restaurant %></a></td>
+    <td><%= lunch.date %></td>
+  </tr>
 <% end %>
+</table>
+<h3>Others:</h3>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Restaurant</th>
+    <th>Date</th>
+  </tr>
+<% @others.each do |lunch| %>
+  <tr>
+    <td><a href="<%= lunch.link %>"><%= lunch.name %></a></td>
+    <td><%= lunch.price %></td>
+    <td><a href="<%= lunch.link %>"><%= lunch.restaurant %></a></td>
+    <td><%= lunch.date %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
