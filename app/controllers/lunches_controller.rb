@@ -5,13 +5,14 @@ class LunchesController < ApplicationController
     @matches = []
     @others = []
     @lunches = Lunch.order("date")
-    @lunches.each {|lunch|
-      if lunch.name.include? "Kebab"
-        @matches << lunch
-      else
-        @others << lunch
-      end
-    }
+      @lunches.each {|lunch|
+        expr = current_user.preferences
+        if !!lunch.name.match(/(#{expr})/im)
+          @matches << lunch
+        else
+          @others << lunch
+        end
+      }
 
     respond_to do |format|
       format.html # index.html.erb
