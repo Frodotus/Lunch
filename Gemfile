@@ -32,3 +32,4 @@ gem "simple_form", ">= 2.0.3"
 gem "quiet_assets", ">= 1.0.1", :group => :development
 gem "nokogiri"
 gem "heroku"
+gem "squeel"

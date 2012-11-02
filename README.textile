@@ -1,6 +1,6 @@
 h1. Lunch
 
-Lunch list fetcher/filter
+Lunch list fetcher/filter.
 
 Try at http://lunch.leino.net/
 
