@@ -127,7 +127,7 @@ task :fetch_ilokivi => :environment do
     date = Date.today - Date.today.cwday + i + 1
     date_node.xpath('li').each do |node|
       lunch = Lunch.new    
-      lunch.name = node.text
+      lunch.name = node.text.split('/').first
       lunch.restaurant = "Ilokivi"
       lunch.date = date
       lunch.price = 5.6

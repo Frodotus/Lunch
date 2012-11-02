@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '1.9.3'
 gem 'rails', '3.2.8'
 
 group :development, :test do
@@ -6,6 +7,7 @@ group :development, :test do
 end
 group :production do
   gem 'pg'
+  gem 'unicorn'
 end
 
 group :assets do
@@ -29,3 +31,4 @@ gem "rolify", ">= 3.2.0"
 gem "simple_form", ">= 2.0.3"
 gem "quiet_assets", ">= 1.0.1", :group => :development
 gem "nokogiri"
+gem "heroku"
