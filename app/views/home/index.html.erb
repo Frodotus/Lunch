@@ -7,14 +7,12 @@
         <th>Name</th>
         <th>Price</th>
         <th class="hidden-phone">Restaurant</th>
-        <th class="hidden-phone">Day</th>
       </tr>
       <% @matches.each do |lunch| %>
       <tr>
         <td><a href="<%= lunch.link %>"><%= lunch.name %></a><div class="visible-phone"><i><%= lunch.restaurant %></i></div>
-        <td><%= number_to_currency(lunch.price, :unit => "&euro;", :separator => ",", :delimiter => "", :format => "%n %u") %></td>
+        <td><%= number_to_currency(lunch.price, :separator => ",", :delimiter => "", :format => "%n") %></td>
         <td class="hidden-phone"><a href="<%= lunch.link %>"><%= lunch.restaurant %></a></td>
-        <td class="hidden-phone"><%= lunch.date.strftime('%A') %></td>
       </tr>
       <% end %>
     </table>
@@ -28,14 +26,12 @@
       <th>Name</th>
       <th>Price</th>
       <th class="hidden-phone">Restaurant</th>
-      <th class="hidden-phone">Day</th>
     </tr>
   <% @others.each do |lunch| %>
     <tr>
       <td><a href="<%= lunch.link %>"><%= lunch.name %></a><div class="visible-phone"><i><%= lunch.restaurant %></i></div>
-      <td><%= number_to_currency(lunch.price, :unit => "&euro;", :separator => ",", :delimiter => "", :format => "%n %u") %></td>
+      <td><%= number_to_currency(lunch.price, :separator => ",", :delimiter => "", :format => "%n") %></td>
       <td class="hidden-phone"><a href="<%= lunch.link %>"><%= lunch.restaurant %></a></td>
-      <td class="hidden-phone"><%= lunch.date.strftime('%A') %></td>
     </tr>
   <% end %>
   </table>
@@ -46,15 +42,13 @@
       <th>Name</th>
       <th>Price</th>
       <th class="hidden-phone">Restaurant</th>
-      <th class="hidden-phone">Day</th>
     </tr>
   <% @lunches.each do |lunch| %>
     <tr>
       <td><a href="<%= lunch.link %>"><%= lunch.name %></a><div class="visible-phone"><i><%= lunch.restaurant %></i></div>
       </td>
-      <td><%= number_to_currency(lunch.price, :unit => "&euro;", :separator => ",", :delimiter => "", :format => "%n %u") %></td>
+      <td><%= number_to_currency(lunch.price, :separator => ",", :delimiter => "", :format => "%n") %></td>
       <td class="hidden-phone"><a href="<%= lunch.link %>"><%= lunch.restaurant %></a></td>
-      <td class="hidden-phone"><%= lunch.date.strftime('%A') %></td>
     </tr>
   <% end %>
   </table>
