@@ -1,5 +1,9 @@
 h1. Lunch
 
+Lunch list fetcher/filter
+
+Try at http://lunch.leino.net/
+
 h2. Getting Started
 
 h3. Install the Required Gems
