@@ -1,5 +1,4 @@
-<h3>Today's menu eat it or starve:</h3>
-
+<h3>Today's menu:</h3>
 <% if user_signed_in? %>
   <% if(@matches.size > 0) %>
     <table class="table table-hover table-striped table-bordered">
@@ -36,7 +35,6 @@
   <% end %>
   </table>
 <% else %>
-  <h3>Today's menu:</h3>
   <table class="table table-striped table-bordered">
     <tr>
       <th>Name</th>
