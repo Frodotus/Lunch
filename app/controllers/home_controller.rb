@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
   def index
     @matches = []
-    if user_signed_in?
+    if user_signed_in? && current_user.preferences
       names = current_user.preferences.split('|')
       names.map! { |x| "%#{x}%" }
       @matches = Lunch.where(:date => Date.today).where{name.like_any names}
