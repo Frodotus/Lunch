@@ -1,7 +1,6 @@
 class HomeController < ApplicationController
   def index
     @matches = []
-    @others = []
     if user_signed_in?
       names = current_user.preferences.split('|')
       names.map! { |x| "%#{x}%" }
