@@ -90,6 +90,7 @@ task :fetch_all => :environment do
   Rake::Task["fetch_antelli"].invoke
   Rake::Task["fetch_ilokivi"].invoke
   Rake::Task["fetch_harald"].invoke
+  Rake::Task["fetch_figaro"].invoke
 end
   
 task :fetch_hestia => :environment do
@@ -161,3 +162,20 @@ task :fetch_harald => :environment do
   end
 end
 
+#Fetch Figaro
+task :fetch_figaro => :environment do
+  puts "Fetching Figaro..."
+  date = Date.today
+  doc = Nokogiri::HTML(open("http://www.lounasinfo.fi/menuframe.php?&c=Suomi&t=Jyv%E4skyl%E4&a=Keskusta&r=40&dmy=#{date.strftime('%d.%m.%Y')}"))
+  foods = doc.inner_html.split('arrowright.gif').last.split('<br>')
+  (2..4).each do |i|
+    name = foods[i].gsub(/^[0-9]\. /, '')
+    lunch = Lunch.new    
+    lunch.name = name.split('</p>').first
+    lunch.restaurant = "Figaro Winebistro"
+    lunch.date = date
+    lunch.price = 9.0
+    lunch.link = "http://www.lounasinfo.fi/index.php?c=Suomi&t=Jyv%E4skyl%E4&a=Keskusta&r=40"
+    lunch.save
+  end
+end
