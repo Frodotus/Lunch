@@ -12,6 +12,7 @@
         <td><a href="<%= lunch.link %>"><%= lunch.name %></a><div class="visible-phone"><i><%= lunch.restaurant %></i></div>
         <td><%= number_to_currency(lunch.price, :separator => ",", :delimiter => "", :format => "%n") %></td>
         <td class="hidden-phone"><a href="<%= lunch.link %>"><%= lunch.restaurant %></a></td>
+      <td class="location">62.0 25.0</td>
       </tr>
       <% end %>
     </table>
@@ -32,8 +33,38 @@
       </td>
       <td><%= number_to_currency(lunch.price, :separator => ",", :delimiter => "", :format => "%n") %></td>
       <td class="hidden-phone"><a href="<%= lunch.link %>"><%= lunch.restaurant %></a></td>
+      <td class="location">62.0 25.0</td>
     </tr>
   <% end %>
   </table>
 <% end %>
 <br />
+<script type="text/javascript">
+      function calculateDistance(lat1, lon1, lat2, lon2) {
+        var R = 6371; // km
+        var dLat = (lat2 - lat1).toRad();
+        var dLon = (lon2 - lon1).toRad(); 
+        var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                Math.cos(lat1.toRad()) * Math.cos(lat2.toRad()) * 
+                Math.sin(dLon / 2) * Math.sin(dLon / 2); 
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)); 
+        var d = R * c;
+        return Math.round( d*10 ) / 10;
+      }
+      Number.prototype.toRad = function() {
+        return this * Math.PI / 180;
+      }
+
+      var latitude = 62.0;
+      var longitude = 25.0;
+      var startPos;
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+          startPos = position;
+//          alert(calculateDistance(startPos.coords.latitude, startPos.coords.longitude, latitude, longitude));
+          $('.location').each(function(i,row) {
+              alert(row.innerHTML);
+          });
+        });
+      }
+</script>

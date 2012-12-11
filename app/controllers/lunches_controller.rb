@@ -5,6 +5,16 @@ class LunchesController < ApplicationController
     @matches = []
     @others = []
     @lunches = Lunch.order("date")
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @lunches }
+    end
+  end
+
+  def preferred
+    @matches = []
+    @others = []
+    @lunches = Lunch.order("date")
       @lunches.each {|lunch|
         expr = current_user.preferences
         if !!lunch.name.match(/(#{expr})/im)
@@ -16,7 +26,7 @@ class LunchesController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @lunches }
+      format.json { render json: @matches }
     end
   end
 

@@ -4,7 +4,7 @@
   <table class="table table-striped table-bordered">
   <h4><%= (date + day).strftime('%A') %>:</h4>
   <% day_match = false %>
-  <% @lunches.each do |lunch| %>
+  <% @matches.each do |lunch| %>
     <% if lunch.date == date + day %>
       <% day_match = true %>
       <tr>
