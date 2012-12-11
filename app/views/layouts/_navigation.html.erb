@@ -2,10 +2,13 @@
 <ul class="nav">
   <% if user_signed_in? %>
     <li>
-    <%= link_to 'Today', '/preferred' %>
+    <%= link_to 'Today', root_path %>
     </li>
     <li>
     <%= link_to 'This week', lunches_path %>
+    </li>
+    <li>
+    <%= link_to 'My lunches', '/preferred' %>
     </li>
     <li>
     <%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %>        
