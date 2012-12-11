@@ -1,23 +1,25 @@
-<h3>This weeks menu:</h3>
-<% date = Date.today - Date.today.cwday %>
-<% (1..7).each do |day| %>
-  <table class="table table-striped table-bordered">
-  <h4><%= (date + day).strftime('%A') %>:</h4>
-  <% day_match = false %>
-  <% @matches.each do |lunch| %>
-    <% if lunch.date == date + day %>
-      <% day_match = true %>
+<h3>Today's menu:</h3>
+<% if user_signed_in? %>
+  <% if(@matches.size > 0) %>
+    <table class="table table-hover table-striped table-bordered">
+      <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th class="hidden-phone">Restaurant</th>
+      </tr>
+      <% @matches.each do |lunch| %>
       <tr>
         <td><a href="<%= lunch.link %>"><%= lunch.name %></a><div class="visible-phone"><i><%= lunch.restaurant %></i></div>
         <td><%= number_to_currency(lunch.price, :separator => ",", :delimiter => "", :format => "%n") %></td>
         <td class="hidden-phone"><a href="<%= lunch.link %>"><%= lunch.restaurant %></a></td>
+      <td class="location">62.0 25.0</td>
       </tr>
-    <% end %>    
+      <% end %>
+    </table>
+  <% else %>
+    <h4>How about pizza today?</h4>
+    <br />
   <% end %>
-  <% if !day_match %>
-    <tr>
-      <td>Nothing today...</td>
-    </tr>
-  <% end %>
-  </table>
+<% else %>
 <% end %>
+<br />
