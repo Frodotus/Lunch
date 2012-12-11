@@ -13,17 +13,13 @@ class LunchesController < ApplicationController
 
   def preferred
     @matches = []
-    @others = []
-    @lunches = Lunch.order("date")
-      @lunches.each {|lunch|
-        expr = current_user.preferences
-        if !!lunch.name.match(/(#{expr})/im)
-          @matches << lunch
-        else
-          @others << lunch
-        end
-      }
-
+    if user_signed_in? && current_user.preferences
+      names = current_user.preferences.split('|')
+      names.map! { |x| "%#{x}%" }
+      @matches = Lunch.where(:date => Date.today).where{name.like_any names}
+    else
+      @matches = []
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @matches }
