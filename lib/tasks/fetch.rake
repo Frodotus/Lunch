@@ -87,7 +87,8 @@ task :fetch_all => :environment do
   fetch_keskimaa("Veturi","http://www.lounaskeskimaa.fi/lounas_ravintola?rid=174")
   fetch_keskimaa("Mestarin Herkku","http://www.lounaskeskimaa.fi/lounas_ravintola?rid=177")
   fetch_keskimaa("ABC Keljonkangas","http://www.lounaskeskimaa.fi/lounas_ravintola?rid=168")
-  Rake::Task["fetch_antelli"].invoke
+# Antelli fetcher is broken since 1.1.2013
+#  Rake::Task["fetch_antelli"].invoke 
   Rake::Task["fetch_ilokivi"].invoke
   Rake::Task["fetch_harald"].invoke
   Rake::Task["fetch_figaro"].invoke
